@@ -1,4 +1,8 @@
 package com.example.cs465_menugram;
 
-public class SearchActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class SearchActivity  extends AppCompatActivity {
 }
