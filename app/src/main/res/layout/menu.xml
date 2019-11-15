@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:text="Menu"
+            android:textColor="#000000"
+            android:textSize="56sp"
+            app:fontFamily="cursive" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:paddingLeft="20dp"
+                android:text="Appetizers"
+                android:textColor="#000000"
+                android:textSize="32sp"
+                app:fontFamily="sans-serif-black" />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:rowCount="3"
+                android:columnCount="2"
+                >
+                <ImageButton
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_rowSpan="3"
+                    android:layout_height="100dp"
+                    android:layout_width = "100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    />
+                <TextView
+                    android:text="@string/dishname1"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:textSize="20sp" />
+                <TextView
+                    android:text="@string/dishdescript1"
+                    android:singleLine="false"
+                    android:layout_width="250dp"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:text="@string/dishprice1"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:textSize="18sp"/>
+
+
+            </GridLayout>
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:rowCount="3"
+                android:columnCount="2"
+                >
+                <ImageButton
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_rowSpan="3"
+                    android:layout_height="100dp"
+                    android:layout_width = "100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    />
+                <TextView
+                    android:text="@string/dishname2"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:textSize="20sp" />
+                <TextView
+                    android:text="@string/dishdescript2"
+                    android:singleLine="false"
+                    android:layout_width="250dp"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:text="@string/dishprice2"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:textSize="18sp"/>
+
+
+            </GridLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:paddingLeft="20dp"
+                android:text="Chef Special"
+                android:textColor="#000000"
+                android:textSize="32sp"
+                app:fontFamily="sans-serif-black" />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:rowCount="3"
+                android:columnCount="2"
+                >
+                <ImageButton
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_rowSpan="3"
+                    android:layout_height="100dp"
+                    android:layout_width = "100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    />
+                <TextView
+                    android:text="@string/dishname3"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:textSize="20sp" />
+                <TextView
+                    android:text="@string/dishdescript3"
+                    android:singleLine="false"
+                    android:layout_width="250dp"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:text="@string/dishprice3"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:textSize="18sp"/>
+
+
+            </GridLayout>
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:rowCount="3"
+                android:columnCount="2"
+                >
+                <ImageButton
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_rowSpan="3"
+                    android:layout_height="100dp"
+                    android:layout_width = "100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    />
+                <TextView
+                    android:text="@string/dishname4"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:textSize="20sp" />
+                <TextView
+                    android:text="@string/dishdescript4"
+                    android:singleLine="false"
+                    android:layout_width="250dp"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:text="@string/dishprice4"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:textSize="18sp"/>
+
+
+            </GridLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
