@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "165621918951",
+    "firebase_url": "https://cs465menugram.firebaseio.com",
+    "project_id": "cs465menugram",
+    "storage_bucket": "cs465menugram.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165621918951:android:622aebe14bffef6a420642",
+        "android_client_info": {
+          "package_name": "com.example.cs465_menugram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "165621918951-mttsf9k9ivljfnubshtofnmb6gnrlddl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cs465_menugram",
+            "certificate_hash": "e6edd08a090e739e655c789f4095da05b38a0001"
+          }
+        },
+        {
+          "client_id": "165621918951-2ihl0qngmkvmhsskocj19hbr2nu53et8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cs465_menugram",
+            "certificate_hash": "3cc12888ba0c97b91560c891e82844b72845e0bd"
+          }
+        },
+        {
+          "client_id": "165621918951-1ssl0krl284iins7n6vv3b8i9v5173n3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDldijrSEjN5GvUCc6U-dv2BoIQv4xAnEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "165621918951-1ssl0krl284iins7n6vv3b8i9v5173n3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
