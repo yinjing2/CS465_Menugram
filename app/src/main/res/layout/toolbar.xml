@@ -8,7 +8,6 @@
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
     android:minHeight="?attr/actionBarSize"
-    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     android:background="?attr/colorPrimary">
 
@@ -16,8 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Menugram"
-        android:layout_gravity="center"
+        android:layout_marginRight="?actionBarSize"
         android:gravity="center"
+        android:textSize="32dp"
         android:id="@+id/toolbar_title" />
 
 </androidx.appcompat.widget.Toolbar>

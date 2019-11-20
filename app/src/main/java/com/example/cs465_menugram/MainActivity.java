@@ -26,8 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == R.id.button) {
             true_clicked = true;
-            Intent intent = new Intent(this, ReviewActivity.class);
-            intent.putExtra("is_True", "true");
+            Intent intent = new Intent(this, RestaurantActivity.class);
             startActivity(intent);
         }
     }

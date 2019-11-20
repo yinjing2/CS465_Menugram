@@ -1,6 +1,8 @@
 package com.example.cs465_menugram;
 
 import android.Manifest;
+import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -8,16 +10,27 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import net.gotev.uploadservice.MultipartUploadRequest;
-import net.gotev.uploadservice.UploadNotificationConfig;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -30,18 +43,14 @@ import androidx.core.content.ContextCompat;
 
 public class ReviewActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //constant to track image chooser intent
+    private static final int PICK_IMAGE_REQUEST = 234;
+
     //Declaring views
-    private Button buttonChoose;
     private Button buttonUpload;
-    private ImageView imageView;
+    private ImageButton imageButton;
     private EditText editText;
     private RatingBar simpleRatingBar;
-
-    //Image request code
-    private int PICK_IMAGE_REQUEST = 1;
-
-    //storage permission code
-    private static final int STORAGE_PERMISSION_CODE = 123;
 
     //Bitmap to get image from gallery
     private Bitmap bitmap;
@@ -49,59 +58,37 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     //Uri to store the image uri
     private Uri filePath;
 
+    //firebase objects
+    private StorageReference storageReference;
+    private DatabaseReference mDatabase;
+    private DatabaseReference upload_database;
+    private DatabaseReference ratingDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        TextView toolbar_title = (TextView) findViewById(R.id.toolbar_title);
+        toolbar_title.setText("Review");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
 
-        //Requesting storage permission
-        requestStoragePermission();
-
         //Initializing views
-        buttonChoose = (Button) findViewById(R.id.buttonChoose);
         buttonUpload = (Button) findViewById(R.id.buttonUpload);
-        imageView = (ImageView) findViewById(R.id.imageView);
+        imageButton = (ImageButton) findViewById(R.id.imageButton);
         editText = (EditText) findViewById(R.id.editTextName);
         simpleRatingBar = (RatingBar) findViewById(R.id.simpleRatingBar);
 
+        storageReference = FirebaseStorage.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
+
         //Setting clicklistener
-        buttonChoose.setOnClickListener(this);
+        imageButton.setOnClickListener(this);
         buttonUpload.setOnClickListener(this);
     }
-
-
-    /*
-     * This is the method responsible for image upload
-     * We need the full image path and the name for the image in this method
-     * */
-    public void uploadMultipart() {
-        //getting name for the image
-        String name = editText.getText().toString().trim();
-
-        //getting the actual path of the image
-        String path = getPath(filePath);
-
-        //Uploading code
-        try {
-            String uploadId = UUID.randomUUID().toString();
-
-            //Creating a multi part request
-            new MultipartUploadRequest(this, uploadId, Constants.UPLOAD_URL)
-                    .addFileToUpload(path, "image") //Adding file
-                    .addParameter("name", name) //Adding text parameter to the request
-                    .setNotificationConfig(new UploadNotificationConfig())
-                    .setMaxRetries(2)
-                    .startUpload(); //Starting the upload
-
-        } catch (Exception exc) {
-            Toast.makeText(this, exc.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
-
 
     //method to show file chooser
     private void showFileChooser() {
@@ -115,84 +102,98 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             filePath = data.getData();
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                imageView.setImageBitmap(bitmap);
-
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                imageButton.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    //method to get the file path from uri
-    public String getPath(Uri uri) {
-        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-        cursor.moveToFirst();
-        String document_id = cursor.getString(0);
-        document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
-        cursor.close();
-
-        cursor = getContentResolver().query(
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                null, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
-        cursor.moveToFirst();
-        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
-        cursor.close();
-
-        return path;
-    }
-
-
-    //Requesting permission
-    private void requestStoragePermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
-            return;
-
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            //If the user has denied the permission previously your code will come to this block
-            //Here you can explain why you need this permission
-            //Explain here why you need this permission
-        }
-        //And finally ask for the permission
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
-    }
-
-
-    //This method will be called when the user will tap on allow or deny
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
-        //Checking the request code of our request
-        if (requestCode == STORAGE_PERMISSION_CODE) {
-
-            //If permission is granted
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //Displaying a toast
-                Toast.makeText(this, "Permission granted now you can read the storage", Toast.LENGTH_LONG).show();
-            } else {
-                //Displaying another toast if permission is not granted
-                Toast.makeText(this, "Oops you just denied the permission", Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
-
-    @Override
-    public void onClick(View v) {
-        if (v == buttonChoose) {
+    public void onClick(View view) {
+        if (view == imageButton) {
             showFileChooser();
-        }
-        if (v == buttonUpload) {
-            uploadMultipart();
-            String totalStars = "Total Stars:: " + simpleRatingBar.getNumStars();
-            String rating = "Rating :: " + simpleRatingBar.getRating();
-            Toast.makeText(getApplicationContext(), totalStars + "\n" + rating, Toast.LENGTH_LONG).show();
+        } else if (view == buttonUpload) {
+            uploadFile();
+//            String totalStars = "Total Stars:: " + simpleRatingBar.getNumStars();
+//            String rating = "Rating :: " + simpleRatingBar.getRating();
+//            Toast.makeText(getApplicationContext(), totalStars + "\n" + rating, Toast.LENGTH_LONG).show();
+
         }
     }
 
+    public String getFileExtension(Uri uri) {
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
 
+    private void uploadFile() {
+        //checking if file is available
+        if (filePath != null) {
+            //displaying progress dialog while image is uploading
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading");
+            progressDialog.show();
+
+            final String dish_name = editText.getText().toString();
+            final String restaurant_name = "Sakanaya";
+            final Float rating = simpleRatingBar.getRating();
+            //getting the storage reference
+            final StorageReference sRef = storageReference.child(Constants.STORAGE_PATH_UPLOADS + System.currentTimeMillis() + "." + "." + getFileExtension(filePath));
+
+            //adding the file to reference
+            final UploadTask uploadTask = sRef.putFile(filePath);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                    //displaying the upload progress
+                    double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                    progressDialog.setMessage("Uploaded " + ((int) progress) + "%...");
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                        @Override
+                        public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                            if (!task.isSuccessful()) {
+                                Log.i("problem", task.getException().toString());
+                            }
+
+                            return sRef.getDownloadUrl();
+                        }
+                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Uri> task) {
+                            if (task.isSuccessful()) {
+                                progressDialog.dismiss();
+                                Uri downloadUri = task.getResult();
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(Constants.STORAGE_PATH_UPLOADS);
+
+                                Log.i("seeThisUri", downloadUri.toString());// This is the one you should store
+                                Upload upload = new Upload(editText.getText().toString().trim(), downloadUri.toString());
+                                String uploadId = mDatabase.push().getKey();
+                                ref.child(uploadId).setValue(upload);
+                            } else {
+                                Log.i("wentWrong", "downloadUri failure");
+                            }
+                        }
+                    });
+                }
+            });
+        } else {
+            Toast.makeText(getApplicationContext(), "Please Select a Photo", Toast.LENGTH_LONG).show();
+        }
+    }
 }
