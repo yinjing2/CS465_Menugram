@@ -43,30 +43,12 @@ public class SearchActivity extends AppCompatActivity {
 
         textView = (TextView)findViewById(R.id.text_view_search);
 
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
-//                Log.d("SEARCH_ACTIVITY", "Value is: " + map);
-//                textView.setText(map.toString());
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Log.w("SEARCH_ACTIVITY", "Failed to read value. ", databaseError.toException());
-//            }
-//        });
-
-
         searchView = (SearchView) findViewById(R.id.search_view_search_activity);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(final String query) {
-
-              //  DatabaseReference mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
-             //   Query result = mFirebaseDatabaseReference.child("userTasks").orderByChild("title").equalTo("#" + query);
-                        myRef.addValueEventListener( new ValueEventListener() {
+                    myRef.addValueEventListener( new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot)
                     {
@@ -97,7 +79,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void setupBottomNavigationView(){
-        com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
+        com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
         BottomNavigationViewHelper.enableNavigation(SearchActivity.this, this,bottomNavigationViewEx);
         Menu menu = bottomNavigationViewEx.getMenu();
