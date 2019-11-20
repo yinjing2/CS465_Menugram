@@ -17,6 +17,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageException;
 import com.google.firebase.storage.StorageReference;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -41,6 +43,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         Upload upload = uploads.get(position);
 
+        String logo = "https://firebasestorage.googleapis.com/v0/b/cs465menugram.appspot.com/o/logos%2FSakanaya_Logo.jpg?alt=media&token=266f318e-b66e-425f-ad05-71c90cf6da9c";
+
+        try {
+            URL logo_url = new URL(logo);
+            Glide.with(context).load(logo_url).into(holder.logo_image);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
         holder.textViewName.setText(upload.getName());
         Glide.with(context).load(upload.getUrl()).into(holder.imageView);
     }
@@ -54,12 +65,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         public TextView textViewName;
         public ImageView imageView;
+        public ImageView logo_image;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             textViewName = (TextView) itemView.findViewById(R.id.textViewName);
-            imageView = (ImageView) itemView.findViewById(R.id.imageView);
+            imageView = (ImageView) itemView.findViewById(R.id.post_image);
+            logo_image = (ImageView) itemView.findViewById(R.id.profile_photo);
         }
     }
 }

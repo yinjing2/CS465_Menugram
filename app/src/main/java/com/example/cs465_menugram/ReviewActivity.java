@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -31,6 +33,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -47,7 +50,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     private static final int PICK_IMAGE_REQUEST = 234;
 
     //Declaring views
-    private Button buttonUpload;
+    private ImageButton buttonUpload;
     private ImageButton imageButton;
     private EditText editText;
     private RatingBar simpleRatingBar;
@@ -68,6 +71,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review);
+        setupBottomNavigationView();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         TextView toolbar_title = (TextView) findViewById(R.id.toolbar_title);
@@ -77,7 +81,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
 
         //Initializing views
-        buttonUpload = (Button) findViewById(R.id.buttonUpload);
+        buttonUpload = (ImageButton) findViewById(R.id.buttonUpload);
         imageButton = (ImageButton) findViewById(R.id.imageButton);
         editText = (EditText) findViewById(R.id.editTextName);
         simpleRatingBar = (RatingBar) findViewById(R.id.simpleRatingBar);
@@ -195,5 +199,13 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         } else {
             Toast.makeText(getApplicationContext(), "Please Select a Photo", Toast.LENGTH_LONG).show();
         }
+    }
+    private void setupBottomNavigationView(){
+        com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
+        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
+        BottomNavigationViewHelper.enableNavigation(ReviewActivity.this, this,bottomNavigationViewEx);
+        Menu menu = bottomNavigationViewEx.getMenu();
+        MenuItem menuItem = menu.getItem(2);
+        menuItem.setChecked(true);
     }
 }

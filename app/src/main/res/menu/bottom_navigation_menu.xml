@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ic_house"
+        android:icon="@drawable/home"
+        android:title="Home">
+    </item>
+
+
+    <item
+        android:id="@+id/ic_search"
+        android:icon="@drawable/search"
+        android:title="Search">
+    </item>
+
+    <item
+        android:id="@+id/ic_add"
+        android:icon="@drawable/add"
+        android:title="Review">
+    </item>
+
+<!--    <item-->
+<!--        android:id="@+id/ic_alert"-->
+<!--        android:icon="@drawable/upload"-->
+<!--        android:title="">-->
+<!--    </item>-->
+
+    <item
+        android:id="@+id/ic_user"
+        android:icon="@drawable/user"
+        android:title="User">
+    </item>
+</menu>

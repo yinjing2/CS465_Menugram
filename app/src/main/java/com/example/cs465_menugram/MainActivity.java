@@ -9,7 +9,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    public String Restaurant_Name = "Sakanaya";
     public static boolean true_clicked = false;
     public static boolean false_clicked = false;
 

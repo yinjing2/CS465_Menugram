@@ -44,14 +44,15 @@
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="match_parent"
-        android:layout_height="360dp"
+        android:layout_height="320dp"
         android:background="#ffffff"
-        app:srcCompat="@drawable/upload"/>
+        app:srcCompat="@drawable/upload"
+        android:scaleType="fitCenter"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="@dimen/vertical_margin"
         android:orientation="horizontal">
 
@@ -60,8 +61,16 @@
             android:layout_height="match_parent"
             android:paddingTop="@dimen/vertical_margin"
             android:layout_marginLeft="@dimen/horizontal_margin"
-            android:layout_marginRight="@dimen/horizontal_margin"
+            android:layout_marginRight="10dp"
             app:srcCompat="@drawable/customer" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:textSize="25dp"
+            android:paddingTop="10dp"
+            android:text="Rating: " />
 
         <RatingBar
             android:id="@+id/simpleRatingBar"
@@ -75,14 +84,17 @@
 
     </LinearLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/buttonUpload"
-        android:layout_width="128dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/vertical_margin"
-        android:background="@drawable/round_button"
-        android:text="SUBMIT" />
+        android:layout_width="wrap_content"
+        android:layout_height="106dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
+        android:background="@android:color/transparent"
+        android:text="SUBMIT"
+        app:srcCompat="@drawable/submit" />
+
+    <include layout="@layout/layout_bottom_navigation_view"/>
 
 
 </LinearLayout>

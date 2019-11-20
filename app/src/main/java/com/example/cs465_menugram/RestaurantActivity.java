@@ -2,12 +2,16 @@ package com.example.cs465_menugram;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -19,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,7 +39,14 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_2);
+        setContentView(R.layout.restaurant);
+        setupBottomNavigationView();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        TextView toolbar_title = (TextView) findViewById(R.id.toolbar_title);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+
 
         threeDots = (ImageButton)findViewById(R.id.threeDotImage);
         camera = (ImageButton)findViewById(R.id.camera);
@@ -97,5 +109,13 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
             Intent intent = new Intent(this, ReviewActivity.class);
             startActivity(intent);
         }
+    }
+    private void setupBottomNavigationView(){
+        com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
+        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
+        BottomNavigationViewHelper.enableNavigation(RestaurantActivity.this, this,bottomNavigationViewEx);
+        Menu menu = bottomNavigationViewEx.getMenu();
+        MenuItem menuItem = menu.getItem(1);
+        menuItem.setChecked(false);
     }
 }
