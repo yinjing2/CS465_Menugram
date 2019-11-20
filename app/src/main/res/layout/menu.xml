@@ -38,16 +38,18 @@
                 android:rowCount="3"
                 android:columnCount="2"
                 >
+
                 <ImageButton
-                    android:layout_row="0"
-                    android:layout_column="0"
-                    android:layout_rowSpan="3"
+                    android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_width = "100dp"
+                    android:layout_row="0"
+                    android:layout_rowSpan="3"
+                    android:layout_column="0"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
-                    />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/goldenpotato" />
 
                 <TextView
                     android:id="@+id/dishOne"
@@ -91,7 +93,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/Pancakes.jpg" />
+                    android:src="@drawable/pancakes" />
 
                 <TextView
                     android:id="@+id/dishTwo"
@@ -136,16 +138,18 @@
                 android:rowCount="3"
                 android:columnCount="2"
                 >
+
                 <ImageButton
-                    android:layout_row="0"
-                    android:layout_column="0"
-                    android:layout_rowSpan="3"
+                    android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_width = "100dp"
+                    android:layout_row="0"
+                    android:layout_rowSpan="3"
+                    android:layout_column="0"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
-                    />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/californiaroll" />
 
                 <TextView
                     android:id="@+id/dishThree"
@@ -179,16 +183,18 @@
                 android:rowCount="3"
                 android:columnCount="2"
                 >
+
                 <ImageButton
-                    android:layout_row="0"
-                    android:layout_column="0"
-                    android:layout_rowSpan="3"
+                    android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_width = "100dp"
+                    android:layout_row="0"
+                    android:layout_rowSpan="3"
+                    android:layout_column="0"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
-                    />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ramen" />
 
                 <TextView
                     android:id="@+id/dishFour"
