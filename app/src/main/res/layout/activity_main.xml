@@ -6,6 +6,7 @@
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:background="#FFFFFF"
         android:scaleType="centerInside"
         android:src="@drawable/logo" />
 
@@ -32,6 +33,7 @@
                 <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
                     android:columnCount="3"
                     android:rowCount="5">
 
@@ -43,6 +45,7 @@
                         android:layout_column="0"
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
+                        android:background="#FFFFFF"
                         android:scaleType="centerCrop"
                         android:src="@drawable/sakanaya" />
 
@@ -87,8 +90,9 @@
                     android:id="@+id/dish"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
+                    android:background="#FFFFFF"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/pancake"></ImageButton>
+                    android:src="@drawable/pancakes"></ImageButton>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -116,6 +120,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="5dp"
+                        android:background="#FFFFFF"
                         android:scaleType="centerCrop"
                         android:src="@drawable/spoonhouse" />
 
@@ -157,6 +162,7 @@
                 <ImageButton
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
+                    android:background="#FFFFFF"
                     android:scaleType="centerCrop"
                     android:src="@drawable/bibimbap"></ImageButton>
 
@@ -193,6 +199,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="5dp"
+                            android:background="#FFFFFF"
                             android:scaleType="centerCrop"
                             android:src="@drawable/burgerking" />
 
@@ -234,6 +241,7 @@
                     <ImageButton
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
+                        android:background="#FFFFFF"
                         android:scaleType="centerCrop"
                         android:src="@drawable/chicken"></ImageButton>
                 </LinearLayout>

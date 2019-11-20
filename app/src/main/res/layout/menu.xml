@@ -48,6 +48,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
+                    android:background="#FFFFFF"
                     android:scaleType="centerCrop"
                     android:src="@drawable/goldenpotato" />
 
@@ -92,6 +93,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
+                    android:background="#FFFFFF"
                     android:scaleType="centerCrop"
                     android:src="@drawable/pancakes" />
 
@@ -148,6 +150,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
+                    android:background="#FFFFFF"
                     android:scaleType="centerCrop"
                     android:src="@drawable/californiaroll" />
 
@@ -193,6 +196,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
+                    android:background="#FFFFFF"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ramen" />
 
