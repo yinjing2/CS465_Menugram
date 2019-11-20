@@ -1,38 +1,13 @@
 package com.example.cs465_menugram;
 
-import android.app.AppComponentFactory;
-
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import net.gotev.uploadservice.MultipartUploadRequest;
-import net.gotev.uploadservice.UploadNotificationConfig;
-
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.Map;
 import java.util.Set;
-import java.util.UUID;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -94,8 +69,8 @@ public class MenuActivity extends AppCompatActivity {
                 dishName1 = (TextView)findViewById(R.id.dishOne);
                 dishName1.setText((String)restaurant_name_set.toArray()[0]);
 
-                dishName2 = (TextView)findViewById(R.id.dishOne);
-                dishName2.setText((String)restaurant_name_set.toArray()[0]);
+                dishName2 = (TextView)findViewById(R.id.dishTwo);
+                dishName2.setText((String)restaurant_name_set.toArray()[1]);
 
                 dishName3 = (TextView)findViewById(R.id.dishThree);
                 dishName3.setText((String)restaurant_name_set.toArray()[2]);

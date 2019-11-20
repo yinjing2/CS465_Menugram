@@ -42,7 +42,9 @@
                         android:layout_row="0"
                         android:layout_column="0"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginTop="5dp" />
+                        android:layout_marginTop="5dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/sakanaya" />
 
                     <TextView
                         android:id="@+id/restName"
@@ -82,9 +84,11 @@
                     android:background="@android:color/darker_gray" />
 
                 <ImageButton
-                    android:id="@+id/dishOne"
+                    android:id="@+id/dish"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"></ImageButton>
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pancake"></ImageButton>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -111,7 +115,9 @@
                         android:layout_column="0"
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp" />
+                        android:layout_marginRight="5dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/spoonhouse" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -150,7 +156,9 @@
 
                 <ImageButton
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"></ImageButton>
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bibimbap"></ImageButton>
 
 
             </LinearLayout>
@@ -184,7 +192,9 @@
                             android:layout_column="0"
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="5dp"
-                            android:layout_marginRight="5dp" />
+                            android:layout_marginRight="5dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/burgerking" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -223,7 +233,9 @@
 
                     <ImageButton
                         android:layout_width="match_parent"
-                        android:layout_height="180dp"></ImageButton>
+                        android:layout_height="180dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/chicken"></ImageButton>
                 </LinearLayout>
 
             </LinearLayout>

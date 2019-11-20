@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        pic = (ImageButton) findViewById(R.id.dishOne);
+        pic = (ImageButton) findViewById(R.id.dish);
         title = (TextView) findViewById(R.id.name);
         restName = (TextView) findViewById(R.id.restName);
 
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onClick(View v) {
-        if (v.getId() == R.id.name || v.getId() == R.id.restName || v.getId() == R.id.dishOne) {
+        if (v.getId() == R.id.name || v.getId() == R.id.restName || v.getId() == R.id.dish) {
             TextView tView = findViewById(R.id.restName);
             Intent intent = new Intent(this, MenuActivity.class);
             intent.putExtra("rest_name", tView.getText());
