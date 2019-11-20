@@ -24,6 +24,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import org.w3c.dom.Text;
 
+import java.util.Iterator;
 import java.util.Map;
 
 public class SearchActivity extends AppCompatActivity {
@@ -52,17 +53,33 @@ public class SearchActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot)
                     {
-                        Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
-                        Log.d("SEARCH_ACTIVITY", "Value is: " + map);
-                        Log.d("SEARCH_ACTIVITY", map.get(query).toString());
 
-                        textView.setText(map.get(query).toString());
+                        DataSnapshot restaurantSnapShot = dataSnapshot.child("Restaurants");
+                        Iterator<DataSnapshot> restaurantIterator = restaurantSnapShot.getChildren().iterator();
+
+                        boolean textChanged = false;
+                        while(restaurantIterator.hasNext()) {
+                            DataSnapshot temp_snapshot = restaurantIterator.next();
+                            String restaurant_name = temp_snapshot.getKey();
+                            String description = temp_snapshot.getValue().toString();
+
+                            if(query.equals(temp_snapshot.getKey())) {
+                                textView.setText(restaurant_name);
+                                textChanged = true;
+                                break;
+                            }
+                        }
+                        if(!textChanged) {
+                            textView.setText("No restaurants found");
+                        }
+
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError)
                     {
                         Log.w("SEARCH_ACTIVITY", "searching database FAILED");
+                        textView.setText("No restaurants found");
                     }
 
                 });
