@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">CS465_Menugram</string>
+    <string name="dishname1">Golden Potato</string>
+    <string name="dishdescript1">fries</string>
+    <string name="dishprice1">$5.99</string>
+    <string name="dishname2">Golden Potato</string>
+    <string name="dishdescript2">fries</string>
+    <string name="dishprice2">$5.99</string>
+    <string name="dishname3">Golden Potato</string>
+    <string name="dishdescript3">fries</string>
+    <string name="dishprice3">$5.99</string>
+    <string name="dishname4">Golden Potato</string>
+    <string name="dishdescript4">fries</string>
+    <string name="dishprice4">$5.99</string>
 </resources>
