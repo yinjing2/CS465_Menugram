@@ -1,6 +1,7 @@
 package com.example.cs465_menugram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,11 +37,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.layout_images, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
+
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         Upload upload = uploads.get(position);
 
         String logo = "https://firebasestorage.googleapis.com/v0/b/cs465menugram.appspot.com/o/logos%2FSakanaya_Logo.jpg?alt=media&token=266f318e-b66e-425f-ad05-71c90cf6da9c";
@@ -51,7 +53,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
         holder.textViewName.setText(upload.getName());
         Glide.with(context).load(upload.getUrl()).into(holder.imageView);
     }
@@ -75,5 +76,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             logo_image = (ImageView) itemView.findViewById(R.id.profile_photo);
         }
     }
+
+
 }
 

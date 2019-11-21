@@ -103,7 +103,7 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
 
     public void onClick(View v){
         if(v==threeDots){
-            Intent intent = new Intent(this, ShowImagesActivity.class);
+            Intent intent = new Intent(this, MenuActivity.class);
             startActivity(intent);
         } else if (v == camera) {
             Intent intent = new Intent(this, ReviewActivity.class);

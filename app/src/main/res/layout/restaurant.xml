@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="112dp"
             android:layout_height="110dp"
-            android:src="@drawable/customer"
+            android:src="@drawable/mcdonalds"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"/>
 
@@ -26,7 +26,6 @@
             >
 
             <TextView
-                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:text="McDonalds"
@@ -40,17 +39,19 @@
                 android:orientation="horizontal"
                 >
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="53dp"
-                android:padding="10dp"
-                android:src="@drawable/customer"></ImageView>
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:padding="5dp"
+                android:src="@drawable/star"></ImageView>
 
                 <TextView
-                    android:id="@+id/textView5"
                     android:layout_width="133dp"
                     android:layout_height="53dp"
                     android:layout_weight="1"
-                    android:text="4.2"
+                    android:text="3.8"
+                    android:textSize="20dp"
+                    android:paddingBottom="10dp"
                     android:gravity="center_vertical"/>
 
             </LinearLayout>
@@ -59,7 +60,6 @@
 
     <TextView
         android:inputType="none"
-        android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="501 Green Street"
@@ -71,13 +71,12 @@
     <View
         android:layout_width="wrap_content"
         android:layout_marginTop="1dp"
-        android:background="@color/Black"
+        android:background="@color/grey"
         android:layout_marginHorizontal="40dp"
         android:layout_height="1dp" />
 
     <TextView
         android:inputType="none"
-        android:id="@+id/textView7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Burgers, Fries and More"
@@ -90,7 +89,7 @@
     <View
         android:layout_width="wrap_content"
         android:layout_marginTop="1dp"
-        android:background="@color/Black"
+        android:background="@color/grey"
         android:layout_marginHorizontal="40dp"
         android:layout_height="1dp" />
 
@@ -105,122 +104,139 @@
         android:scrollbars="vertical">
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="0"
-            android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_columnWeight="1"
-            android:src="@drawable/customer" />
+            android:padding="0dp"
+            android:src="@drawable/m1"/>
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="0"
-            android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_columnWeight="1"
-            android:src="@drawable/customer" />
+            android:padding="0dp"
+            android:src="@drawable/m2" />
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="0"
-            android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:src="@drawable/customer" />
+            android:src="@drawable/m3" />
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="0"
-            android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:src="@drawable/customer" />
+            android:src="@drawable/m4" />
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="1"
-            android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:src="@drawable/customer" />
+            android:src="@drawable/m5" />
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="1"
-            android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:src="@drawable/customer" />
+            android:src="@drawable/m6" />
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="1"
-            android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:src="@drawable/customer" />
+            android:src="@drawable/m8" />
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="1"
-            android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:src="@drawable/customer" />
+            android:src="@drawable/m9" />
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="2"
-            android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:src="@drawable/customer" />
+            android:src="@drawable/m10" />
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="2"
-            android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:src="@drawable/customer" />
+            android:src="@drawable/m11" />
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="2"
-            android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:src="@drawable/customer" />
+            android:src="@drawable/m12" />
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="2"
-            android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:src="@drawable/customer" />
+            android:src="@drawable/m13" />
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="3"
-            android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:src="@drawable/customer" />
+            android:src="@drawable/m14" />
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="3"
-            android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:src="@drawable/customer" />
+            android:src="@drawable/m15" />
 
         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_row="3"
-            android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:src="@drawable/customer" />
+            android:src="@drawable/m16" />
 
         <ImageButton
             android:id="@+id/threeDotImage"

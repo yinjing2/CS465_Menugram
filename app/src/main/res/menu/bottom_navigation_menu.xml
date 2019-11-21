@@ -27,7 +27,6 @@
 <!--    </item>-->
 
     <item
-        android:id="@+id/ic_user"
         android:icon="@drawable/user"
         android:title="User">
     </item>

@@ -21,11 +21,41 @@
         </SearchView>
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Result for: "
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:textSize="30dp"></TextView>
+
+
+
+        <TextView
             android:id="@+id/text_view_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Default Text"
+            android:text="DefaultText"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:textSize="30dp"></TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                map:srcCompat="@drawable/camera" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:text="Sakanaya" />
+        </LinearLayout>
+
+
     </LinearLayout>
 
     <include layout="@layout/layout_bottom_navigation_view" />

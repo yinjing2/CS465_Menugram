@@ -26,6 +26,7 @@
                     app:civ_border_color="@color/black"
                     app:civ_border_width="0.5dp"
                     android:layout_marginLeft="25dp"
+                    android:clickable="true"
                     android:layout_centerVertical="true"/>
 
 
@@ -48,8 +49,7 @@
                     android:src="@drawable/ic_ellipses"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:id="@+id/ivEllipses"/>
+                    android:layout_marginRight="20dp" />
 
             </RelativeLayout>
 
@@ -70,13 +70,11 @@
                 <RelativeLayout
                     android:layout_width="60dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/heartLayout"
                     android:background="@color/white">
 
                     <ImageView
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:id="@+id/image_heart_red"
                         android:layout_centerInParent="true"
                         android:layout_marginLeft="20dp"
                         android:src="@drawable/ic_heart_red"
@@ -85,7 +83,6 @@
                     <ImageView
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:id="@+id/image_heart"
                         android:layout_centerInParent="true"
                         android:layout_marginLeft="20dp"
                         android:src="@drawable/ic_heart_white"
@@ -98,24 +95,15 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/relLayout3"
                 android:layout_below="@+id/relLayout2"
                 android:padding="20dp"
                 android:layout_marginBottom="50dp"
                 android:background="@color/white">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Liked by Mitch, Tom, Mohammed and 30 others"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:id="@+id/image_likes"/>
-
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="0dp"
                     android:background="@color/Black"
                     android:minHeight="1dp" />
 
