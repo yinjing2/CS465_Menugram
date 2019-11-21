@@ -33,7 +33,6 @@ import java.util.Map;
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView restaurantNameTextView;
-    private TextView getRestaurantDescriptionTextView;
     private LinearLayout resultsListView;
     private SearchView searchView;
 
@@ -64,6 +63,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                         DataSnapshot restaurantSnapShot = dataSnapshot.child("Restaurants");
                         Iterator<DataSnapshot> restaurantIterator = restaurantSnapShot.getChildren().iterator();
 
+                        TextView descriptionView = new TextView(SearchActivity.this);
+
                         boolean textChanged = false;
                         while(restaurantIterator.hasNext()) {
                             DataSnapshot temp_snapshot = restaurantIterator.next();
@@ -72,7 +73,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                             if(query.equals(temp_snapshot.getKey())) {
                                 restaurantNameTextView.setText(restaurant_name);
-                                TextView descriptionView = new TextView(SearchActivity.this);
                                 LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(
                                         LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                 descriptionView.setText(temp_snapshot.getValue().toString());
@@ -83,6 +83,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                         }
                         if(!textChanged) {
                             restaurantNameTextView.setText("No restaurants found");
+                            descriptionView.setText("");
                         }
 
                     }
