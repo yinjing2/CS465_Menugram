@@ -3,6 +3,7 @@ package com.example.cs465_menugram;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.renderscript.Sampler;
 import android.util.Log;
@@ -10,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,9 +30,11 @@ import org.w3c.dom.Text;
 import java.util.Iterator;
 import java.util.Map;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView textView;
+    private TextView restaurantNameTextView;
+    private TextView getRestaurantDescriptionTextView;
+    private LinearLayout resultsListView;
     private SearchView searchView;
 
     @Override
@@ -42,8 +47,10 @@ public class SearchActivity extends AppCompatActivity {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference();
 
-        textView = (TextView)findViewById(R.id.text_view_search);
+        restaurantNameTextView = (TextView)findViewById(R.id.text_view_search_activity);
+        restaurantNameTextView.setOnClickListener(SearchActivity.this);
 
+        resultsListView = (LinearLayout) findViewById(R.id.linear_layout_search_activity);
         searchView = (SearchView) findViewById(R.id.search_view_search_activity);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -64,13 +71,18 @@ public class SearchActivity extends AppCompatActivity {
                             String description = temp_snapshot.getValue().toString();
 
                             if(query.equals(temp_snapshot.getKey())) {
-                                textView.setText(restaurant_name);
+                                restaurantNameTextView.setText(restaurant_name);
+                                TextView descriptionView = new TextView(SearchActivity.this);
+                                LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(
+                                        LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                descriptionView.setText(temp_snapshot.getValue().toString());
+                                resultsListView.addView(descriptionView);
                                 textChanged = true;
                                 break;
                             }
                         }
                         if(!textChanged) {
-                            textView.setText("No restaurants found");
+                            restaurantNameTextView.setText("No restaurants found");
                         }
 
                     }
@@ -79,7 +91,7 @@ public class SearchActivity extends AppCompatActivity {
                     public void onCancelled(DatabaseError databaseError)
                     {
                         Log.w("SEARCH_ACTIVITY", "searching database FAILED");
-                        textView.setText("No restaurants found");
+                        restaurantNameTextView.setText("No restaurants found");
                     }
 
                 });
@@ -92,7 +104,17 @@ public class SearchActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
 
+    public void onClick(View v) {
+        if (v.getId() == R.id.text_view_search_activity) {
+            restaurantNameTextView = (TextView)findViewById(R.id.text_view_search_activity);
+            if(restaurantNameTextView.getText().equals("McDonalds")) {
+                Intent intent = new Intent(this, RestaurantActivity.class);
+                startActivity(intent);
+            }
+
+        }
     }
 
     private void setupBottomNavigationView(){

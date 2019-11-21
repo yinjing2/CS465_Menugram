@@ -9,6 +9,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linear_layout_search_activity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -21,11 +22,13 @@
         </SearchView>
 
         <TextView
-            android:id="@+id/text_view_search"
+            android:id="@+id/text_view_search_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Default Text"
+            android:text="Results for:"
             android:textSize="30dp"></TextView>
+
+
     </LinearLayout>
 
     <include layout="@layout/layout_bottom_navigation_view" />
