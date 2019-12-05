@@ -32,7 +32,7 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
 
     private ImageButton threeDots;
     private ImageButton camera;
-    private Button loginActivity;
+
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -49,11 +49,9 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
 
 
         camera = (ImageButton)findViewById(R.id.camera);
-        loginActivity = (Button)findViewById(R.id.loginButton);
 
 
         camera.setOnClickListener(this);
-        loginActivity.setOnClickListener(this);
 
         LinearLayout layout = (LinearLayout)findViewById(R.id.main_layout);
         layout.setOnTouchListener(new OnSlideTouchListener() {
@@ -237,10 +235,7 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
             Intent intent = new Intent(this, ReviewActivity.class);
             startActivity(intent);
         }
-        else if(v==loginActivity){
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-        }
+
     }
 
     private void setupBottomNavigationView(){
