@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.annotation.GlideModule;
@@ -23,6 +24,8 @@ import java.net.URL;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+
+    public boolean isLiked = false;
 
     private Context context;
     private List<Upload> uploads;
@@ -53,6 +56,44 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        holder.logo_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, RestaurantActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isLiked == true) {
+                    holder.like.setVisibility(View.VISIBLE);
+                    holder.liked.setVisibility(View.INVISIBLE);
+                    isLiked = false;
+                } else {
+                    holder.like.setVisibility(View.INVISIBLE);
+                    holder.liked.setVisibility(View.VISIBLE);
+                    isLiked = true;
+                }
+            }
+        });
+
+        holder.liked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isLiked == true) {
+                    holder.like.setVisibility(View.VISIBLE);
+                    holder.liked.setVisibility(View.INVISIBLE);
+                    isLiked = false;
+                } else {
+                    holder.like.setVisibility(View.INVISIBLE);
+                    holder.liked.setVisibility(View.VISIBLE);
+                    isLiked = true;
+                }
+            }
+        });
+
         holder.textViewName.setText(upload.getName());
         Glide.with(context).load(upload.getUrl()).into(holder.imageView);
     }
@@ -67,14 +108,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public TextView textViewName;
         public ImageView imageView;
         public ImageView logo_image;
+        public ImageView like, liked;
 
         public ViewHolder(View itemView) {
             super(itemView);
+
             textViewName = (TextView) itemView.findViewById(R.id.textViewName);
             imageView = (ImageView) itemView.findViewById(R.id.post_image);
             logo_image = (ImageView) itemView.findViewById(R.id.profile_photo);
+            like = (ImageView) itemView.findViewById(R.id.white_heart);
+            liked = (ImageView) itemView.findViewById(R.id.red_heart);
         }
+
     }
+
+
+
 
 }
 

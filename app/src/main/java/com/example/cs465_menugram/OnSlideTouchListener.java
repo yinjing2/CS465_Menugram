@@ -1,5 +1,4 @@
 package com.example.cs465_menugram;
-import android.content.Intent;
 import android.view.MotionEvent;
 import android.view.View;
 

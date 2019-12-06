@@ -6,7 +6,9 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,11 +30,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ShowImagesActivity extends AppCompatActivity {
     //recyclerview object
     private RecyclerView recyclerView;
+
 
     //adapter object
     private RecyclerView.Adapter adapter;
@@ -54,6 +58,9 @@ public class ShowImagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.showimageslayout);
         setupBottomNavigationView();
+
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
@@ -82,10 +89,18 @@ public class ShowImagesActivity extends AppCompatActivity {
 
                 //iterating through all the values in database
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    Upload upload = postSnapshot.getValue(Upload.class);
-                    uploads.add(upload);
+                    String Restaurant_Name = postSnapshot.getKey();
+                    for (DataSnapshot ds : postSnapshot.getChildren()) {
+                        Upload upload = ds.getValue(Upload.class);
+                        uploads.add(upload);
+                        Log.d("TAG", ds.getValue().toString());
+
+                    }
+//                    Upload upload = postSnapshot.getValue(Upload.class);
+//                    uploads.add(upload);
                 }
                 //creating adapter
+                Collections.reverse(uploads);
                 adapter = new MyAdapter(getApplicationContext(), uploads);
 
                 //adding adapter to recyclerview
@@ -99,6 +114,14 @@ public class ShowImagesActivity extends AppCompatActivity {
         });
 
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.category_menu, menu);
+//        return true;
+//    }
+//    View.OnCreateContextMenuListener
 
 
     private void setupBottomNavigationView(){

@@ -11,13 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    public String Restaurant_Name = "Sakanaya";
     public static boolean true_clicked = false;
     public static boolean false_clicked = false;
 
     private Button reviewButton;
     private Button searchButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         reviewButton = (Button) findViewById(R.id.button);
         searchButton = (Button) findViewById(R.id.search_page_button);
 
-
         reviewButton.setOnClickListener(this);
         searchButton.setOnClickListener(this);
-
     }
 
     public void onClick(View v) {

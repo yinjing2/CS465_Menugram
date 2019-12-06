@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,7 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     String EmailHolder, PasswordHolder;
 
     // Creating buttons.
-    Button Login,SignUP ;
+    ImageView Login;
+    TextView SignUP ;
 
     // Creating Boolean to hold EditText empty true false value.
     Boolean EditTextEmptyCheck;
@@ -48,8 +51,8 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.editText_password);
 
         // Assign ID's to button.
-        Login = (Button)findViewById(R.id.button_login);
-        SignUP = (Button)findViewById(R.id.button_SignUP);
+        Login = (ImageView) findViewById(R.id.button_login);
+        SignUP = (TextView) findViewById(R.id.button_SignUP);
 
         progressDialog =  new ProgressDialog(LoginActivity.this);
 

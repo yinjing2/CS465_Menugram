@@ -54,6 +54,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     private ImageButton imageButton;
     private EditText editText;
     private RatingBar simpleRatingBar;
+    private  EditText editTextRestaurant;
 
     //Bitmap to get image from gallery
     private Bitmap bitmap;
@@ -73,18 +74,19 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.review);
         setupBottomNavigationView();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        TextView toolbar_title = (TextView) findViewById(R.id.toolbar_title);
-        toolbar_title.setText("Review");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        TextView toolbar_title = (TextView) findViewById(R.id.toolbar_title);
+//        toolbar_title.setText("Review");
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+//        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
 
         //Initializing views
         buttonUpload = (ImageButton) findViewById(R.id.buttonUpload);
         imageButton = (ImageButton) findViewById(R.id.imageButton);
         editText = (EditText) findViewById(R.id.editTextName);
         simpleRatingBar = (RatingBar) findViewById(R.id.simpleRatingBar);
+        editTextRestaurant = (EditText) findViewById(R.id.editTextRestaurant);
 
         storageReference = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
@@ -123,6 +125,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
             showFileChooser();
         } else if (view == buttonUpload) {
             uploadFile();
+
 //            String totalStars = "Total Stars:: " + simpleRatingBar.getNumStars();
 //            String rating = "Rating :: " + simpleRatingBar.getRating();
 //            Toast.makeText(getApplicationContext(), totalStars + "\n" + rating, Toast.LENGTH_LONG).show();
@@ -183,12 +186,15 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
                             if (task.isSuccessful()) {
                                 progressDialog.dismiss();
                                 Uri downloadUri = task.getResult();
-                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(Constants.STORAGE_PATH_UPLOADS);
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(Constants.STORAGE_PATH_UPLOADS).child(editTextRestaurant.getText().toString());
 
                                 Log.i("seeThisUri", downloadUri.toString());// This is the one you should store
-                                Upload upload = new Upload(editText.getText().toString().trim(), downloadUri.toString());
+                                Upload upload = new Upload(editText.getText().toString().trim(), simpleRatingBar.getRating(), editTextRestaurant.getText().toString(), downloadUri.toString());
                                 String uploadId = mDatabase.push().getKey();
                                 ref.child(uploadId).setValue(upload);
+                                editText.setText("");
+                                imageButton.setImageDrawable(getResources().getDrawable(R.drawable.upload));
+                                simpleRatingBar.setNumStars(0);
                             } else {
                                 Log.i("wentWrong", "downloadUri failure");
                             }

@@ -25,6 +25,35 @@
             android:layout_marginLeft="@dimen/horizontal_margin"
             android:textSize="22dp"
             android:paddingTop="@dimen/vertical_margin"
+            android:text="Restaurant Name: "
+
+            />
+
+        <EditText
+            android:id="@+id/editTextRestaurant"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="Restaurant Name Here"
+            android:backgroundTint="@color/Black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:textSize="22dp"
+            android:paddingTop="@dimen/vertical_margin"
             android:text="Dish Name: "
 
             />
@@ -40,6 +69,7 @@
             android:backgroundTint="@color/Black"/>
 
     </LinearLayout>
+
 
     <ImageButton
         android:id="@+id/imageButton"
