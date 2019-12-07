@@ -42,11 +42,11 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restaurant);
 //        setupBottomNavigationView();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        TextView toolbar_title = (TextView) findViewById(R.id.toolbar_title);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        TextView toolbar_title = (TextView) findViewById(R.id.toolbar_title);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
 
         Toast toast = Toast.makeText(getApplicationContext(),"Slide left for menu",Toast.LENGTH_SHORT);
         // toast.setMargin(50,50);
