@@ -63,6 +63,7 @@
                 android:layout_below="@+id/editText_email"
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="85dp"
+                android:inputType="textPassword"
                 android:background="@null"
                 android:gravity="left"
                 android:hint="Enter Password" />

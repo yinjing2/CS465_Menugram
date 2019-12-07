@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +50,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 public class UserProfileActivity extends AppCompatActivity {
 
     // Creating button.
-    Button logout ;
+    ImageView logout ;
 
     // Creating TextView.
     TextView userEmailShow ;
@@ -65,7 +66,7 @@ public class UserProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
         setupBottomNavigationView();
         // Assigning ID's to button and TextView.
-        logout = (Button)findViewById(R.id.logout);
+        logout = (ImageView)findViewById(R.id.logout);
         userEmailShow = (TextView)findViewById(R.id.user_email);
 
         // Adding FirebaseAuth instance to FirebaseAuth object.
@@ -90,7 +91,7 @@ public class UserProfileActivity extends AppCompatActivity {
         firebaseUser = firebaseAuth.getCurrentUser();
 
         // Getting logged in user email from firebaseUser.getEmail() method and set into TextView.
-        userEmailShow.setText("Successfully Logged In, Your Email = " + firebaseUser.getEmail());
+        userEmailShow.setText("Currently logged in as " + firebaseUser.getEmail());
 
         // Adding click listener on logout button.
         logout.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +121,7 @@ public class UserProfileActivity extends AppCompatActivity {
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
         BottomNavigationViewHelper.enableNavigation(UserProfileActivity.this, this,bottomNavigationViewEx);
         Menu menu = bottomNavigationViewEx.getMenu();
-        MenuItem menuItem = menu.getItem(0);
+        MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
     }
 

@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="0dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:alpha="1"
+        app:srcCompat="@drawable/profile"/>
 
     <TextView
         android:id="@+id/user_email"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="468dp"
         android:gravity="center"
-        android:textSize="20dp"
-        android:textColor="#000"/>
+        android:textColor="#898B9B"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:fontFamily="@font/unkempt" />
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+    <ImageView
         android:id="@+id/logout"
-        android:layout_below="@+id/user_email"
-        android:text="Click Here To Logout"
-        android:layout_marginTop="30dp"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginTop="515dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/logout" />
 
     <include layout="@layout/layout_bottom_navigation_view"/>
 

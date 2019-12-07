@@ -12,16 +12,25 @@ import android.widget.TextView;
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageException;
 import com.google.firebase.storage.StorageReference;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.List;
+
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
@@ -46,7 +55,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        Upload upload = uploads.get(position);
+        final Upload upload = uploads.get(position);
+
 
         String logo = "https://firebasestorage.googleapis.com/v0/b/cs465menugram.appspot.com/o/logos%2FSakanaya_Logo.jpg?alt=media&token=266f318e-b66e-425f-ad05-71c90cf6da9c";
 
@@ -93,9 +103,47 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 }
             }
         });
-
+        Log.d("Rating",upload.rn);
         holder.textViewName.setText(upload.getName());
+
+        try {
+            holder.ratingTextView.setText(String.valueOf(upload.getRating()));
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+//        if (!(String.valueOf(upload.getRating())).equals(NULL)) {
+//            holder.ratingTextView.setText(String.valueOf(upload.getRating()));
+//        }
         Glide.with(context).load(upload.getUrl()).into(holder.imageView);
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
+
+        myRef.addValueEventListener( new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                DataSnapshot newSnapShot = dataSnapshot.child("Logos");
+                Iterator<DataSnapshot> snapshotIterator = newSnapShot.getChildren().iterator();
+
+                //   TextView descriptionView = new TextView(SearchActivity.this);
+
+                //   boolean textChanged = false;
+                while (snapshotIterator.hasNext()) {
+                    DataSnapshot temp_snapshot = snapshotIterator.next();
+                    String restaurant_name = temp_snapshot.getKey().toString();
+                    Log.d("Tag", restaurant_name + " " + upload.getRestaurantName());
+                    if (upload.rn.equals(restaurant_name)) {
+                        Glide.with(context).load(temp_snapshot.getValue()).into(holder.logo_image);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -109,10 +157,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public ImageView imageView;
         public ImageView logo_image;
         public ImageView like, liked;
+        public TextView ratingTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-
+            ratingTextView = (TextView) itemView.findViewById(R.id.ratingTextView);
             textViewName = (TextView) itemView.findViewById(R.id.textViewName);
             imageView = (ImageView) itemView.findViewById(R.id.post_image);
             logo_image = (ImageView) itemView.findViewById(R.id.profile_photo);

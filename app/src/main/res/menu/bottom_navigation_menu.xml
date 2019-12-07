@@ -20,11 +20,11 @@
         android:title="Review">
     </item>
 
-    <item
-        android:id="@+id/ic_food"
-        android:icon="@drawable/fork"
-        android:title="Food">
-    </item>
+<!--    <item-->
+<!--        android:id="@+id/ic_food"-->
+<!--        android:icon="@drawable/fork"-->
+<!--        android:title="Food">-->
+<!--    </item>-->
 
     <item
         android:id="@+id/ic_profile"

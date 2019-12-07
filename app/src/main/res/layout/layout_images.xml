@@ -50,13 +50,32 @@
                         android:textSize="20sp" />
 
 
+<!--                    <ImageView-->
+<!--                        android:layout_width="30dp"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:layout_alignParentRight="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_marginRight="20dp"-->
+<!--                        android:src="@drawable/ic_ellipses" />-->
+
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:src="@drawable/ic_ellipses" />
+                        android:scaleType="fitCenter"
+                        android:layout_marginRight="55dp"
+                        android:src="@drawable/star"></ImageView>
+
+                    <TextView
+                        android:id="@+id/ratingTextView"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_centerVertical="true"
+                        android:text="3.8"
+                        android:textSize="20dp" />
 
                 </RelativeLayout>
 

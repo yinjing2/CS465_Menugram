@@ -2,10 +2,9 @@ package com.example.cs465_menugram;
 
 public class Upload {
     private String name;
-    private String url;
     private float rating;
-    private String restaurant_name;
-
+    public String rn;
+    private String url;
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
     public Upload() {
@@ -15,7 +14,7 @@ public class Upload {
         this.name = name;
         this.url= url;
         this.rating = rating;
-        this.restaurant_name = restaurant_name;
+        this.rn = restaurant_name;
     }
 
     public String getName() {
@@ -26,7 +25,7 @@ public class Upload {
         return url;
     }
 
-    public String getRestaurantName() { return restaurant_name;}
+    public String getRestaurantName() { return rn;}
 
     public float getRating() {return rating; }
 }

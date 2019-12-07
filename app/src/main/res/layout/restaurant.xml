@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical" android:id="@+id/main_layout">
 
     <include layout="@layout/toolbar" />
@@ -13,11 +15,11 @@
 
         <ImageView
             android:id="@+id/logoIcon"
-            android:layout_width="112dp"
+            android:layout_width="110dp"
             android:layout_height="110dp"
-            android:src="@drawable/mcdonalds"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"/>
+            android:padding="20dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/mcdonalds" />
 
 
         <LinearLayout
@@ -30,48 +32,57 @@
                 android:id="@+id/restaurantTextView"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
+                android:layout_marginTop="20dp"
                 android:text="McDonalds"
-                android:textSize="32dp"
-                android:layout_marginTop="25sp"
-                />
+                android:textSize="32dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 >
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:scaleType="fitCenter"
-                android:padding="5dp"
-                android:src="@drawable/star"></ImageView>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/star"></ImageView>
 
                 <TextView
-                    android:layout_width="133dp"
-                    android:layout_height="53dp"
-                    android:layout_weight="1"
-                    android:text="3.8"
                     android:id="@+id/ratingTextView"
-                    android:textSize="20dp"
-                    android:paddingBottom="10dp"
-                    android:gravity="center_vertical"/>
+                    android:layout_width="133dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="3.8"
+                    android:textSize="20dp" />
 
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/addressTextView"
-        android:inputType="none"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="501 Green Street"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:textColor="@color/black"
-        android:layout_marginHorizontal="30dp"/>
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            app:srcCompat="@drawable/address" />
+
+        <TextView
+            android:id="@+id/addressTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:inputType="none"
+            android:text="501 Green Street"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+    </LinearLayout>
     <View
         android:layout_width="wrap_content"
         android:layout_marginTop="1dp"
@@ -79,18 +90,29 @@
         android:layout_marginHorizontal="40dp"
         android:layout_height="1dp" />
 
-    <TextView
-        android:id="@+id/tagTextView"
-        android:inputType="none"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Burgers, Fries and More"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:layout_marginHorizontal="30dp"
-        />
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            app:srcCompat="@drawable/description" />
+
+        <TextView
+            android:id="@+id/tagTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:inputType="none"
+            android:text="Burgers, Fries and More"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+    </LinearLayout>
     <View
         android:layout_width="wrap_content"
         android:layout_marginTop="1dp"
@@ -101,12 +123,12 @@
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="284dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/horizontal_margin"
-        android:layout_marginTop="@dimen/vertical_margin"
         android:columnCount="4"
         android:rowCount="4"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        android:useDefaultMargins="true">
 
         <ImageView
             android:id="@+id/img1"
@@ -115,10 +137,9 @@
             android:layout_row="0"
             android:layout_column="0"
             android:layout_columnWeight="1"
-            android:padding="0dp"
             android:background="@drawable/image_border"
-            android:scaleType="fitXY"
-          />
+            android:padding="0dp"
+            android:scaleType="fitXY" />
 
 
         <ImageView
@@ -129,8 +150,7 @@
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-             />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/img3"
@@ -140,8 +160,7 @@
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-        />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/img4"
@@ -151,8 +170,7 @@
             android:layout_column="3"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-           />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/img5"
@@ -162,8 +180,7 @@
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-     />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/img6"
@@ -173,8 +190,7 @@
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-         />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/img7"
@@ -184,8 +200,7 @@
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-        />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/img8"
@@ -195,8 +210,7 @@
             android:layout_column="3"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-        />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/img9"
@@ -206,8 +220,7 @@
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-           />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/img10"
@@ -217,8 +230,7 @@
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-          />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/img11"
@@ -228,8 +240,7 @@
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-        />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/img12"
@@ -239,8 +250,7 @@
             android:layout_column="3"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-         />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/img13"
@@ -250,8 +260,7 @@
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-       />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/img14"
@@ -263,7 +272,7 @@
             android:padding="0dp"
             android:scaleType="fitXY"
 
-             />
+            />
 
         <ImageView
             android:id="@+id/img15"
@@ -273,40 +282,29 @@
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-            />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/img16"
-            android:layout_row="3"
             android:layout_width="0dp"
             android:layout_height="70dp"
+            android:layout_row="3"
             android:layout_column="3"
             android:layout_columnWeight="1"
             android:padding="0dp"
-            android:scaleType="fitXY"
-             />
+            android:scaleType="fitXY" />
     </GridLayout>
-
-    <TextView
-        android:layout_width="200dp"
-        android:layout_height="20sp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Slide left for Menu"
-        android:textSize="18sp"
-      ></TextView>
 
 
     <ImageButton
-        android:id= "@+id/camera"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
+        android:id="@+id/camera"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/camera"
-        android:scaleType="fitCenter"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:background="@color/cardview_light_background"
+        android:scaleType="fitCenter"
+        android:src="@drawable/camera"
 
         />
 

@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/vertical_margin"
             android:layout_marginLeft="@dimen/horizontal_margin"
-            android:textSize="22dp"
+            android:textSize="16dp"
             android:paddingTop="@dimen/vertical_margin"
             android:text="Restaurant Name: "
 
@@ -35,6 +35,7 @@
             android:layout_marginTop="@dimen/vertical_margin"
             android:layout_marginRight="@dimen/horizontal_margin"
             android:layout_height="wrap_content"
+            android:textSize="16dp"
             android:layout_weight="2"
             android:hint="Restaurant Name Here"
             android:backgroundTint="@color/Black"/>
@@ -52,7 +53,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/vertical_margin"
             android:layout_marginLeft="@dimen/horizontal_margin"
-            android:textSize="22dp"
+            android:textSize="16dp"
             android:paddingTop="@dimen/vertical_margin"
             android:text="Dish Name: "
 
@@ -66,6 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:hint="Dish Name Here"
+            android:textSize="16dp"
             android:backgroundTint="@color/Black"/>
 
     </LinearLayout>
@@ -73,6 +75,7 @@
 
     <ImageButton
         android:id="@+id/imageButton"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="320dp"
         android:background="#ffffff"
@@ -94,13 +97,13 @@
             android:layout_marginRight="10dp"
             app:srcCompat="@drawable/customer" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/vertical_margin"
-            android:textSize="25dp"
-            android:paddingTop="10dp"
-            android:text="Rating: " />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="@dimen/vertical_margin"-->
+<!--            android:textSize="25dp"-->
+<!--            android:paddingTop="10dp"-->
+<!--            android:text="Rating: " />-->
 
         <RatingBar
             android:id="@+id/simpleRatingBar"
@@ -112,17 +115,26 @@
             android:progressTint="@color/Yellow"
             android:rating="0" />
 
+        <ImageButton
+            android:id="@+id/buttonUpload"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:paddingTop="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:text="SUBMIT"
+            app:srcCompat="@drawable/submit" />
+
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/buttonUpload"
+    <View
+        android:id="@+id/view"
         android:layout_width="wrap_content"
-        android:layout_height="106dp"
-        android:layout_gravity="right"
-        android:layout_marginRight="20dp"
-        android:background="@android:color/transparent"
-        android:text="SUBMIT"
-        app:srcCompat="@drawable/submit" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
 
     <include layout="@layout/layout_bottom_navigation_view"/>
 

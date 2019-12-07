@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,12 +41,18 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restaurant);
-        setupBottomNavigationView();
+//        setupBottomNavigationView();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         TextView toolbar_title = (TextView) findViewById(R.id.toolbar_title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+
+        Toast toast = Toast.makeText(getApplicationContext(),"Slide left for menu",Toast.LENGTH_SHORT);
+        // toast.setMargin(50,50);
+        toast.setGravity(Gravity.TOP, 0,700);
+        toast.show();
+
 
 
         camera = (ImageButton)findViewById(R.id.camera);
@@ -58,6 +65,8 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
             @Override
             public boolean onSlideLeft() {
                 Intent intent = new Intent(RestaurantActivity.this, MenuActivity.class);
+//                Log.d("resName", intent.getStringExtra("resName"));
+//                intent.putExtra("RestaurantName", intent.getStringExtra("resName"));
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 return true;
@@ -111,12 +120,13 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
             Intent intent = getIntent();
 
             final String restaurantName = intent.getStringExtra("resName");
+            MenuActivity.menurn = restaurantName;
             Log.d("n", restaurantName);
 
         String text = restaurantName;
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(getApplicationContext(), text, duration);
-        toast.show();
+//        int duration = Toast.LENGTH_SHORT;
+//        Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+//        toast.show();
 
             //final String restaurantName = "Sakanaya";
 
@@ -237,13 +247,13 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
         }
 
     }
-
-    private void setupBottomNavigationView(){
-        com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
-        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNavigation(RestaurantActivity.this, this,bottomNavigationViewEx);
-        Menu menu = bottomNavigationViewEx.getMenu();
-        MenuItem menuItem = menu.getItem(3);
-        menuItem.setChecked(true);
-    }
+//
+//    private void setupBottomNavigationView(){
+//        com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
+//        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
+//        BottomNavigationViewHelper.enableNavigation(RestaurantActivity.this, this,bottomNavigationViewEx);
+//        Menu menu = bottomNavigationViewEx.getMenu();
+//        MenuItem menuItem = menu.getItem(3);
+//        menuItem.setChecked(true);
+//    }
 }
