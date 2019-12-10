@@ -193,6 +193,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
                                 String uploadId = mDatabase.push().getKey();
                                 ref.child(uploadId).setValue(upload);
                                 editText.setText("");
+                                editTextRestaurant.setText("");
                                 imageButton.setImageDrawable(getResources().getDrawable(R.drawable.upload));
                                 simpleRatingBar.setNumStars(0);
                             } else {
