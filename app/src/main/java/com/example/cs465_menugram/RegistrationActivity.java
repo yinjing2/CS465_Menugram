@@ -31,7 +31,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         private EditText inputEmail, inputPassword;
         private Button btnSignIn, btnSignUp, btnResetPassword;
-        private ProgressBar progressBar;
+//        private ProgressBar progressBar;
         private FirebaseAuth auth;
 
         @Override
@@ -80,14 +80,14 @@ public class RegistrationActivity extends AppCompatActivity {
                         return;
                     }
 
-                    progressBar.setVisibility(View.VISIBLE);
+//                    progressBar.setVisibility(View.VISIBLE);
                     //create user
                     auth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     Toast.makeText(RegistrationActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
-                                    progressBar.setVisibility(View.GONE);
+//                                    progressBar.setVisibility(View.GONE);
                                     // If sign in fails, display a message to the user. If sign in succeeds
                                     // the auth state listener will be notified and logic to handle the
                                     // signed in user can be handled in the listener.

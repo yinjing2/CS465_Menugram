@@ -70,6 +70,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, RestaurantActivity.class);
+                intent.putExtra("resName", "Sakanaya");
                 context.startActivity(intent);
             }
         });
