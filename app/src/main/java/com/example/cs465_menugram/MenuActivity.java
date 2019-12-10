@@ -44,7 +44,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class MenuActivity extends AppCompatActivity {
-    public static String menurn;
+    public static String menurn = "Sakanaya";
 
 //    private String restaurantName;
 //    private TextView dishName1;

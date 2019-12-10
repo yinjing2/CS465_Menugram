@@ -3,6 +3,7 @@ package com.example.cs465_menugram;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -69,30 +70,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(final String query) {
-            // do algolia async search
-                Index index = client.getIndex("dev_Restaurants");
-
-                Log.d("SEARCH_ACTIVITY", "submitted" + query);
-
-                Query algolia_query = new Query(query).setHitsPerPage(50);
-                index.searchAsync(algolia_query, new CompletionHandler() {
-                    @Override
-                    public void requestCompleted(JSONObject content, AlgoliaException error) {
-                        // [...]
-                        Log.d("SEARCH_ACTIVITY", content.toString());
-                    }
-                });
-
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-            // do algolia async search
+                // do algolia async search
                 resultsLinearLayout.removeAllViews();
                 Index index = client.getIndex("dev_Restaurants");
-
-                Log.d("SEARCH_ACTIVITY", "submitted" + newText);
 
                 Query algolia_query = new Query("McDonalds");
                 index.searchAsync(algolia_query, new CompletionHandler() {
@@ -118,16 +98,17 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                             if(key.equals("McDonalds")) {
                                 ImageButton img = new ImageButton(SearchActivity.this);
+                                img.setBackgroundColor(Color.TRANSPARENT);
                                 img.setImageResource(R.drawable.mcdonalds_search);
                                 img.setScaleType(ImageView.ScaleType.FIT_XY);
                                 img.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 620));
-
 
                                 //FIX THIS
                                 img.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         Intent intent = new Intent(SearchActivity.this, RestaurantActivity.class);
+                                        intent.putExtra("resName", "McDonalds");
                                         startActivity(intent);
                                     }
                                 });
@@ -140,9 +121,21 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                             else if(key.equals("Sakanaya")) {
                                 ImageButton img = new ImageButton(SearchActivity.this);
                                 img.setImageResource(R.drawable.sakanaya_search);
+                                img.setBackgroundColor(Color.TRANSPARENT);
                                 img.setScaleType(ImageView.ScaleType.FIT_XY);
+//                                img.setAlpha(0);
                                 img.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 620));
+                                img.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = new Intent(SearchActivity.this, RestaurantActivity.class);
+                                        intent.putExtra("resName", "Sakanaya");
+                                        startActivity(intent);
+                                    }
+                                });
+
                                 resultsLinearLayout.addView(img);
+
                             }
 
                         }
@@ -152,15 +145,95 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                 return true;
             }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+//            // do algolia async search
+//                resultsLinearLayout.removeAllViews();
+//                Index index = client.getIndex("dev_Restaurants");
+//
+//                Log.d("SEARCH_ACTIVITY", "submitted" + newText);
+//
+//                Query algolia_query = new Query("McDonalds");
+//                index.searchAsync(algolia_query, new CompletionHandler() {
+//                    @Override
+//                    public void requestCompleted(JSONObject content, AlgoliaException error) {
+//                        // [...]
+//
+//                        //Get array of results
+//                        JSONArray objects = new JSONArray();
+//                        JSONObject results = new JSONObject();
+//
+//                        try {
+//                            objects = content.getJSONArray("hits");
+//                            results = objects.getJSONObject(0);
+//                        } catch (JSONException e) {
+//                            Log.d("SEARCH_ACTIVITY", "JSON EXCEPTION");
+//                        }
+//
+//                        Iterator<String> keys = results.keys();
+//                        while(keys.hasNext()) {
+//                            String key = keys.next();
+//                            Log.d("SEARCH_ACTIVITY", "key is " + key);
+//
+//                            if(key.equals("McDonalds")) {
+//                                ImageButton img = new ImageButton(SearchActivity.this);
+//                                img.setBackgroundColor(Color.TRANSPARENT);
+//                                img.setImageResource(R.drawable.mcdonalds_search);
+//                                img.setScaleType(ImageView.ScaleType.FIT_XY);
+//                                img.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 620));
+//
+//                                //FIX THIS
+//                                img.setOnClickListener(new View.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(View v) {
+//                                        Intent intent = new Intent(SearchActivity.this, RestaurantActivity.class);
+//                                        intent.putExtra("resName", "McDonalds");
+//                                        startActivity(intent);
+//                                    }
+//                                });
+//
+//
+//
+//                                resultsLinearLayout.addView(img);
+//                            }
+//
+//                            else if(key.equals("Sakanaya")) {
+//                                ImageButton img = new ImageButton(SearchActivity.this);
+//                                img.setImageResource(R.drawable.sakanaya_search);
+//                                img.setBackgroundColor(Color.TRANSPARENT);
+//                                img.setScaleType(ImageView.ScaleType.FIT_XY);
+////                                img.setAlpha(0);
+//                                img.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 620));
+//                                img.setOnClickListener(new View.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(View v) {
+//                                        Intent intent = new Intent(SearchActivity.this, RestaurantActivity.class);
+//                                        intent.putExtra("resName", "Sakanaya");
+//                                        startActivity(intent);
+//                                    }
+//                                });
+//
+//                                resultsLinearLayout.addView(img);
+//
+//                            }
+//
+//                        }
+//
+//                    }
+//                });
+//
+                return true;
+            }
         });
     }
 
     public void onClick(View v) {
         if (v.getId() == R.id.text_view_search_activity) {
-            restaurantNameTextView = (TextView)findViewById(R.id.text_view_search_activity);
-            Intent intent = new Intent(this, RestaurantActivity.class);
-            intent.putExtra("resName", restaurantNameTextView.getText());
-            startActivity(intent);
+//            restaurantNameTextView = (TextView)findViewById(R.id.text_view_search_activity);
+//            Intent intent = new Intent(this, RestaurantActivity.class);
+//            intent.putExtra("resName", restaurantNameTextView.getText());
+//            startActivity(intent);
 
         }
     }

@@ -41,7 +41,7 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restaurant);
-//        setupBottomNavigationView();
+        setupBottomNavigationView();
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        TextView toolbar_title = (TextView) findViewById(R.id.toolbar_title);
 //        setSupportActionBar(toolbar);
@@ -247,13 +247,13 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
         }
 
     }
-//
-//    private void setupBottomNavigationView(){
-//        com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
-//        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-//        BottomNavigationViewHelper.enableNavigation(RestaurantActivity.this, this,bottomNavigationViewEx);
-//        Menu menu = bottomNavigationViewEx.getMenu();
+
+    private void setupBottomNavigationView(){
+        com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
+        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
+        BottomNavigationViewHelper.enableNavigation(RestaurantActivity.this, this,bottomNavigationViewEx);
+        Menu menu = bottomNavigationViewEx.getMenu();
 //        MenuItem menuItem = menu.getItem(3);
 //        menuItem.setChecked(true);
-//    }
+    }
 }

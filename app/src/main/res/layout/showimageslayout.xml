@@ -10,13 +10,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/toolbar" />
+<!--        <include layout="@layout/toolbar" />-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
+            android:paddingTop="60dp"
+            android:paddingBottom="60dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#f9f9f9">
+            android:background="@drawable/menugram_bg">
 
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
